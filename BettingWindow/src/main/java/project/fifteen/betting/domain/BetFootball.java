@@ -1,5 +1,5 @@
 package project.fifteen.betting.domain;
 
-public class Team {
+public class BetFootball implements Bet {
 
 }
