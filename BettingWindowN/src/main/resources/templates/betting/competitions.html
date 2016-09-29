@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Betting Online Home Page</title>
+<link href="../static/css/style_sport.css"
+	th:href="@{/css/style_sport.css}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<header> </header>
+	<nav class="nav">
+			<ul>
+				<li><a href="index.html">football</a></li>
+				<li><a href="sport.html">basketball </a></li>
+				<li><a href="">voleyball</a></li>
+				<li><a href="">handball</a></li>
+				<li><a href="">tennis</a></li>
+				<li><a href="">rugby</a></li>
+				<li><a href="">picado</a></li>
+				<li><a href="">baseball</a></li>
+			</ul>
+	</nav>
+	<section class="home">
+			<div class="container1">
+			<div class="hello">
+				<p id="hello">Hello veljo:)</p>
+			</div>
+			
+				<div class="secnav">
+					<ul>
+						<li><a href="">competitions and teams</a></li>
+						<li><a href="">bet !!!</a></li>
+						<li><a href="">my bets</a></li>
+					</ul>
+				</div>
+			<div class="bye">
+				<a href="">Log out</a>
+			</div>
+			</div>
+			<!-- ============ -->
+			<!-- = Football = -->
+			<!-- ============ -->
+			<div class="container2">
+				<div th:if="${competitions.get(1).getSportID()==1}"> 
+					<h2>Basketball competitions and teams</h2>
+				</div>
+				<div th:if="${competitions.get(1).getSportID()==2}"> 
+					<h2>Football competitions and teams</h2>
+				</div>
+					<table class="outer">
+					<tr>
+						
+									<th class="txt">competition</th>
+									<th> <table class="inner"> <tr><th class="txt">team</th> <th class="txt">details</th></tr></table></th>
+								
+					</tr>
+					<tr th:each="competition : ${competitions}">
+						<td class="txt" th:text="${competition.competitionName}"></td>
+						<td>
+							<table class="inner">					
+								<tr th:each="team : ${competition.getTeams()}">
+
+									<td class="txt" th:text="${team.getTeamName()}"></td>
+									<td class="txt">some link</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			
+			</div>
+	</section>
+	<footer>
+		<br /> <br /> by nocnisetac 2016
+	</footer>
+</body>
+</html>

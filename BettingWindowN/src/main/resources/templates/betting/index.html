@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Betting Online Home Page</title>
+<link href="../static/css/style_home.css"
+          th:href="@{/css/style_home.css}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+	<header>
+	</header>
+	<nav class="nav">
+		<ul>
+			<li><a th:href="@{'/betting/sport/' + ${sports.get(1).getID()}}">football</a></li>
+			<li><a th:href="@{'/betting/sport/' + ${sports.get(0).getID()}}">basketball</a></li>
+			<li><a href="">voleyball</a></li>
+			<li><a href="">handball</a></li>
+			<li><a href="">tennis</a></li>
+			<li><a href="">rugby</a></li>
+			<li><a href="">picado</a></li>
+			<li><a href="">baseball</a></li>
+		</ul>		
+	</nav>
+	<section id="home">
+			<div id="login">
+			<form action="" method="post">
+				<table cellpadding="2" cellspacing="2">
+					<tr>
+						<td>Username</td>
+						<td><input type="text" name="name" /></td>
+					</tr>
+					<tr>
+						<td>Password</td>
+						<td><input type="password" name="pass"/></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td colspan="2"><input type="submit" value="Login"/></td>
+					</tr>
+				</table>
+				<div style="margin-top:10px">or go to  <a href="betting/register.html" th:href="@{'/betting/register'}">REGISTER</a>  page</div>
+			</form>
+			</div>
+			<div id="wellcome">
+				<h1>Welcome :)</h1>
+				<h2>To our experimental betting service. It's still under construction and...</h2>
+				<p id="message">... that is why the following text is completely meaningless. As I'm writing this chapter,
+				summertime is upon Texas (where I reside). And in Texas, it's very common to go through several days
+				of record-high temperatures. It's hot. In weather like this, air conditioning is a must. But the 
+				downside of air conditioning is that it uses electricity, and electricity costs money. There's little we can
+				do to avoid paying for a cool and comfortable home. Now imagine what would happen if the meter went away and 
+				nobody came by to measure our electricity usage. Suppose it was up to each homeowner to contact the electric 
+				company and report their electricity usage. Although it's possible that some obsessive homeowners would keep
+				careful records of how much they used their lights, televisions, and air conditioning, most wouldn't bother.
+				Electricity on the honor system might be great for consumers, but it would be less than ideal for the electric
+				 companies.</p>
+				<h2>... and don't forget: just keep on betting!</h2>
+			</div>
+	</section>
+	<footer>
+		<br/>
+		<br/>
+		by nocnisetac 2016
+	</footer>
+</body>
+</html>

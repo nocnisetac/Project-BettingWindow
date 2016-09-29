@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Betting Online Register Page</title>
+<link href="../static/css/style_register.css"
+	th:href="@{/css/style_register.css}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<header> </header>
+<nav class="nav">
+			<ul>
+				<li><a href="index.html">football</a></li>
+				<li><a href="sport.html">basketball </a></li>
+				<li><a href="">voleyball</a></li>
+				<li><a href="">handball</a></li>
+				<li><a href="">tennis</a></li>
+				<li><a href="">rugby</a></li>
+				<li><a href="">picado</a></li>
+				<li><a href="">baseball</a></li>
+			</ul>
+	</nav>
+	<section>
+		<div th:unless="${err==null}" id="er">
+			<h4 style="color:red;">The password that you have chosen is already in use. Please, choose another.</h4>
+		</div>
+		<div id="register">
+			<h2>Register page</h2>
+			<form th:action="@{/betting/register}" th:object="${client}"
+				method="post">
+				<table cellpadding="2" cellspacing="2">
+					<tr>
+						<td>Username</td>
+						<td><input type="text" th:field="*{username}" /></td>
+						<td th:if="${#fields.hasErrors('username')}"
+							th:errors="*{username}" class="error"></td>
+					</tr>
+					<tr>
+						<td>Password</td>
+						<td><input type="password" th:field="*{password}" /></td>
+						<td th:if="${#fields.hasErrors('password')}"
+							th:errors="*{password}" class="error"></td>
+					</tr>
+					<tr>
+						<td>e-mail</td>
+						<td><input type="text" th:field="*{email}" /></td>
+						<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+							class="error"></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td colspan="2"><input type="submit" value="Save" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</section>
+	<footer>
+		<br /> <br /> by nocnisetac 2016
+	</footer>
+</body>
+</html>

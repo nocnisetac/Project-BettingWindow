@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Betting Online Home Page</title>
+<link href="../static/css/style_sport.css"
+	th:href="@{/css/style_sport.css}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<header> </header>
+	<nav class="nav">
+			<ul>
+				<li><a href="index.html">football</a></li>
+				<li><a href="sport.html">basketball </a></li>
+				<li><a href="">voleyball</a></li>
+				<li><a href="">handball</a></li>
+				<li><a href="">tennis</a></li>
+				<li><a href="">rugby</a></li>
+				<li><a href="">picado</a></li>
+				<li><a href="">baseball</a></li>
+			</ul>
+	</nav>
+	<section class="home">
+			<div class="container1">
+			<div class="hello">
+				<p id="hello">Hello veljo:)</p>
+			</div>
+			
+				<div class="secnav">
+					<ul>
+						<li><a href="">competitions and teams</a></li>
+						<li><a href="">bet !!!</a></li>
+						<li><a href="">my bets</a></li>
+					</ul>
+				</div>
+			<div class="bye">
+				<a href="">Log out</a>
+			</div>
+			</div>
+			<!-- ============ -->
+			<!-- = Football = -->
+			<!-- ============ -->
+			<div class="container2">
+				<div th:if="${competitions.get(1).getSportID()==1}"> 
+					<h2>Basketball - bet right now !</h2>
+				</div>
+				<div th:if="${competitions.get(1).getSportID()==2}"> 
+					<h2>Football - bet right now !</h2>
+					<form th:action="@{/betting/processBets}" th:object="${carrier}" method="post"> 
+					<table class="outer">
+					<tr>
+						<td>
+							<table class="inner">
+								<tr>
+									<th class="txt">competition</th>
+									<th class="txt">datetime</th>
+									<th class="txt">home</th>
+									<th class="txt">away</th>
+									<th class="num">1</th>
+									<th class="num">X</th>
+									<th class="num">2</th>
+									<th class="txt">unlock</th>
+									<th class="txt">tip</th>
+									<th class="txt">invested</th>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr th:each="competition : ${competitions}">
+						<td>
+							
+							<table class="inner">
+								<tr th:each="match : ${competition.getMatches()}"  >
+									<td class="txt" th:text="${competition.competitionName}"></td>
+									<td class="txt"
+										th:text="${#dates.format(match.dateTime, 'dd-MM-yyyy hh:mm:ss')}"></td>
+									<td class="txt" th:text="${match.domestic.getTeamName()}"></td>
+									<td class="txt" th:text="${match.guest.getTeamName()}"></td>
+									<td class="num"
+										th:text="${match.getQuotas().get('1').getQuotaValue()}"></td>
+									<td class="num"
+										th:text="${match.getQuotas().get('x').getQuotaValue()}"></td>
+									<td class="num"
+										th:text="${match.getQuotas().get('2').getQuotaValue()}"></td>
+									<!--  <td class="txt" >
+										<a th:href="@{'/betting/bet/' + ${match.getID()}}">bet</a>   
+									</td> -->
+									<td class="txt">															<!--  th:onclick="'alert(\'' + ${myVar} + '\');'"  -->
+										<input type="checkbox" th:field="*{checked}" th:value="${match.ID}" th:onchange="'document.getElementById(\''+ ${match.ID} +'\').disabled = !this.checked; document.getElementById(\''+ ${match.ID+100} +'\').disabled = !this.checked; '" />
+									</td> 																		
+									<td class="txt">
+										<!-- <input type="text" th:field="*{tips}"/> -->
+										<select th:field="*{tips}" th:id="${match.ID}" th:disabled = "${true}" th:required="required" >
+											<option value="" th:disabled="disabled" th:selected="selected" th:hidden="hidden">Choose tip</option>
+											<option th:value="'1'" >1</option>
+											<option th:value="'x'" >X</option>
+											<option th:value="'2'" >2</option>
+										</select>
+									</td>
+									<td class="txt">
+										<input type="number"  min="0" step="20" th:field="*{invested}" th:id="${match.ID+100}" th:disabled = "${true}" th:required="required"/>
+									</td> 
+								</tr>
+							</table>
+
+						</td>
+					</tr>
+
+				</table>
+				<input type="submit" class="button" value="submit"/>
+				</form>
+				</div>
+			</div>
+	</section>
+	<footer>
+		<br /> <br /> by nocnisetac 2016
+	</footer>
+</body>
+</html>

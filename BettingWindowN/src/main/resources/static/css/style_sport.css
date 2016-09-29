@@ -1,0 +1,255 @@
+body {
+	background-color: black;
+	color: #FFCC00;
+	font-family: Agency FB;
+	position: absolute;
+	left: 50%;
+	width: 945px;
+	margin-top: 0px;
+	margin-left: -473px;
+	 text-align: center;
+}
+
+header {
+	background-image: url(/images/header.png);
+	background-repeat: no-repeat;
+	height: 227px;
+}
+
+.home {
+	background-image: url(/images/back.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 945px;
+	margin: 20px;
+	margin-top: 5px;
+	margin-bottom: 45px;
+	padding-right: 35px;
+}
+
+/****  Navigation  ****/
+.nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	font-size: 22px;
+}
+
+.nav li {
+	float: left;
+}
+
+.nav li a {
+	background-color: #333;
+	display: inline-block;
+	color: white;
+	text-align: center;
+	padding-left: 22px;
+	padding-right: 22px;
+	padding-top: 4px;
+	padding-bottom: 6px;
+	text-decoration: none;
+	border-left: 4px solid #333;
+	border-right: 4px solid #333;
+	border-top: 4px solid white;
+	border-bottom: 4px solid white;
+	margin-bottom: 0px;
+	width: 66px;
+}
+
+.nav li a:hover {
+	display: block;
+	color: #FFCC00;
+}
+
+/****  Login, Second navigation, logout  ****/
+.container1 {
+	padding-top: 10px;
+	padding-right: 35px;
+ text-align: center;
+}
+.hello {
+	display: inline-block;
+	width: 250px; 
+	height: 20px;
+	margin: 0px; padding:0px;
+	text-align: left;
+}
+.hello p:hover {
+	background-color: #Ff4500;
+}
+
+.bye {
+	display: inline-block;
+	width: 250px;
+	height: 20px;
+	margin: 0px;padding:0px;
+	text-align: right;
+}
+
+.secnav {
+	display: inline-block;
+}
+
+.secnav ul {
+	list-style-type: none;
+	margin: auto;
+	padding: 0;
+	overflow: hidden;
+	font-size: 20px;
+}
+
+.secnav li {
+	display: inline;
+}
+
+.secnav li a, .bye a, #hello {
+	display: inline-block;
+	color: white;
+	text-align: center;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	text-decoration: none;
+	border: 2px solid #FFCC00;
+	border-radius: 15px;
+	transition-duration: 0.4s;
+}
+
+.secnav li a:hover, .bye a:hover {
+	/* color: black;*/
+	background-color: #Ff4500;
+}
+
+/****   Result table  ****/
+.container2 {
+	padding-right: 35px;
+ 	text-align: center;
+ 	font-family: Helvetica, Arial, sans-serif;
+}
+.container2 h2 { color: white; }
+.outer {
+	font-size: 12px;
+	color: white;
+	font-family: Helvetica, Arial, sans-serif;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	border: 1px solid #FFCC00;
+	margin: auto;
+	padding: 0px;
+}
+
+.outer tr {
+	border: 1px solid #FFCC00;
+	margin: 0px;
+	padding: 0px;
+}
+
+.outer td, th {
+	margin: 0px;
+	padding: 0px;
+	height: 30px;
+}
+
+.outer th {
+	background: #FFCC00;
+	color: black;
+	font-weight: bold;
+}
+
+.outer td {
+	text-align: center;
+}
+
+.inner {
+	color: white;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	border-collapse: collapse;
+	border-spacing: 0;
+	border: 1px solid white;
+}
+
+.inner tr {
+	border: 1px solid #FFCC00;
+	transition-duration: 0.4s;
+}
+
+.inner td, th {
+	height: 30px;
+}
+
+.inner th {
+	background: #FFCC00;
+	color: black;
+	font-weight: bold;
+}
+
+.inner td {
+	text-align: center;
+}
+
+.num {
+	width: 40px;
+}
+
+.txt {
+	width: 100px;
+}
+
+.inner tr:hover {
+	background: #Ff4500;
+	color: white;
+}
+.inner a:link, a:visited {
+    background-color: #f44336;
+    color: white;
+  	width: 60px;
+    padding: 10px 20px; 
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+}
+
+.inner a:hover, a:active {
+    background-color: red;
+}
+
+/**** Submit button ****/
+.button {
+    background-color: black;
+    margin-top:15px;
+    border: 2px solid #FFCC00; 
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: Agency FB;
+    font-size: 20px;
+    border-radius: 15px;
+    outline: 0;
+     transition-duration: 0.4s;
+}
+.button:hover {
+    background-color: #Ff4500; 
+    color: white;
+}
+.button:active {
+  background-color: #BA4A00;
+}
+input[type=text], input[type=number] {
+    width: 70%;
+}
+/****  Footer  ****/
+footer {
+	background-image: url(/images/footer.png);
+	background-repeat: no-repeat;
+	height: 84px;
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+	width: 945px;
+}

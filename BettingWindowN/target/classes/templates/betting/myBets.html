@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Betting Online Home Page</title>
+<link href="../static/css/style_sport.css"
+	th:href="@{/css/style_sport.css}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<header> </header>
+	<nav class="nav">
+			<ul>
+				<li><a href="index.html">football</a></li>
+				<li><a href="sport.html">basketball </a></li>
+				<li><a href="">voleyball</a></li>
+				<li><a href="">handball</a></li>
+				<li><a href="">tennis</a></li>
+				<li><a href="">rugby</a></li>
+				<li><a href="">picado</a></li>
+				<li><a href="">baseball</a></li>
+			</ul>
+	</nav>
+	<section class="home">
+			<div class="container1">
+			<div class="hello">
+				<p id="hello">Hello veljo:)</p>
+			</div>
+			
+				<div class="secnav">
+					<ul>
+						<li><a href="">competitions
+								and teams</a></li>
+						<li><a href="">bet !!!</a></li>
+						<li><a th:href="@{'/betting/competitions/2'}">my bets</a></li>
+					</ul>
+				</div>
+			<div class="bye">
+				<a href="">Log out</a>
+			</div>
+			</div>
+			<!-- ============ -->
+			<!-- = Football = -->
+			<!-- ============ -->
+			<div class="container2">
+
+				<h2>My bets</h2>
+			<table class="outer">
+				<tr>
+					<th class="num">bet ID</th>
+					<th class="txt">home</th>
+					<th class="txt">away</th>
+					<th class="txt">datetime</th>
+					<th class="txt">bet tip</th>
+					<th class="txt">bet state</th>
+					<th class="txt">invest</th>
+					<th class="txt">gain</th>
+				</tr>
+				<tr th:each="bet : ${myBets}">
+
+					<td class="num" th:text="${bet.ID}"></td>
+					<td class="txt" th:text="${bet.match.domestic.teamName}"></td>
+					<td class="txt" th:text="${bet.match.guest.teamName}"></td>
+					<td class="txt" th:text="${#dates.format(bet.match.dateTime, 'dd-MM-yyyy hh:mm:ss')}"></td>
+					<td class="txt" th:text="${bet.betType}"></td>
+					<td class="txt" th:text="${bet.betState}"></td>
+					<td class="txt" th:text="${bet.invest}"></td>
+					<td class="txt" th:text="${bet.betState.getStateCode()!=2 ? bet.invest*bet.match.getQuotas().get(bet.betType).getQuotaValue() : '-'}">-</td>
+				</tr>
+			</table>
+		</div>
+	</section>
+	<footer>
+		<br /> <br /> by nocnisetac 2016
+	</footer>
+</body>
+</html>

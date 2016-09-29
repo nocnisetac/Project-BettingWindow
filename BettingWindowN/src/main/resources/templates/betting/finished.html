@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Betting Online Home Page</title>
+<link href="../static/css/style_sport.css"
+	th:href="@{/css/style_sport.css}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<header> </header>
+	<nav class="nav">
+			<ul>
+				<li><a href="index.html">football</a></li>
+				<li><a href="sport.html">basketball </a></li>
+				<li><a href="">voleyball</a></li>
+				<li><a href="">handball</a></li>
+				<li><a href="">tennis</a></li>
+				<li><a href="">rugby</a></li>
+				<li><a href="">picado</a></li>
+				<li><a href="">baseball</a></li>
+			</ul>
+	</nav>
+	<section class="home">
+		<div class="container1">
+			<div class="hello">
+				<p id="hello">Hello veljo:)</p>
+			</div>
+
+			<div class="secnav">
+				<ul>
+					<li><a href="">competitions and teams</a></li>
+					<li><a href="">bet !!!</a></li>
+					<li><a href="">my bets</a></li>
+				</ul>
+			</div>
+			<div class="bye">
+				<a href="">Log out</a>
+			</div>
+		</div>
+		<!-- ============ -->
+		<!-- = Football = -->
+		<!-- ============ -->
+		<div class="container2">
+
+			<h1>Your bets are accepted.</h1>
+			<!-- <label th:text="${carrier.getClientID()}">items</label> -->
+			<!-- <span th:text="${bet.ID}"></span> -->
+			<div style="display: inline-block;">
+				<table class="outer">
+					<tr>
+						<th class="txt">datetime</th>
+						<th class="txt">home</th>
+						<th class="txt">away</th>
+					</tr>
+					<tr th:each="match : ${matches}">
+						<td class="txt"
+							th:text="${#dates.format(match.dateTime, 'dd-MM-yyyy hh:mm:ss')}"></td>
+						<td class="txt" th:text="${match.domestic.getTeamName()}"></td>
+						<td class="txt" th:text="${match.guest.getTeamName()}"></td>
+					</tr>
+				</table>
+			</div>
+			<div style="display: inline-block;">
+				<table class="outer">
+					<tr>
+						<th class="txt">tip</th>
+					</tr>
+					<tr th:each="item : ${carrier.getTips()}">
+						<td class="txt" th:text="${item}"></td>
+
+					</tr>
+				</table>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<br /> <br /> by nocnisetac 2016
+	</footer>
+</body>
+</html>

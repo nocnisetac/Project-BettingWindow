@@ -1,0 +1,105 @@
+body {
+	background-color: black;
+	color: #FFCC00;
+	font-family: Agency FB;
+	position: absolute;
+	left: 50%;
+	width: 945px;
+	margin-top: 0px;
+	margin-left: -473px;
+}
+
+header {
+	background-image: url(/images/header.png);
+	background-repeat: no-repeat;
+	height: 227px;
+}
+
+#home {
+	background-image: url(/images/back.png);
+	background-repeat: no-repeat;
+	/* background-attachment: fixed; */
+	background-position: center;
+	height: 450px;
+	width: 945px;
+}
+
+#central {
+	margin: 30px 30px 30px 30px;
+}
+/* Navigation */
+.nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	font-size: 22px;
+}
+
+.nav li {
+	float: left;
+}
+
+.nav li a {
+	background-color: #333;
+	display: inline-block;
+	color: white;
+	text-align: center;
+	padding-left: 22px;
+	padding-right: 22px;
+	padding-top: 4px;
+	padding-bottom: 6px;
+	text-decoration: none;
+	border-left: 4px solid #333;
+	border-right: 4px solid #333;
+	border-top: 4px solid white;
+	border-bottom: 4px solid white;
+	margin-bottom: 0px;
+	width: 66px;
+}
+
+.nav li a:hover {
+	display: block;
+	color: #FFCC00;
+}
+
+/* Register table */
+#login {
+	float: right;
+	margin: 20px;
+	padding: 20px;
+	border: 2px solid #FFCC00;
+	border-radius: 15px;
+}
+
+#login a {
+	color: white;
+}
+/* Wellcome text */
+#wellcome {
+	margin: 20px;
+	padding: 20px;
+}
+
+#message {
+	color: white;
+	font-size: 120%;
+}
+
+h1 {
+	font-family: Lucida Handwriting;
+}
+
+h2 {
+	font-family: Agency FB;
+}
+/* Footer */
+footer {
+	background-image: url(/images/footer.png);
+	background-repeat: no-repeat;
+	height: 84px;
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+	width: 945px;
+}

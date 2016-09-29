@@ -1,0 +1,91 @@
+@SuppressWarnings({ "rawtypes" })
+	public Map<Integer, Competition> getCompleteCompetitionMapBySportID(int id) {
+		String sql = "select "
+				   + "competition.id as comp_id,"
+				   + "competition.sport_id as sport_id,"
+				   + "competition.competition_name as comp_name,"
+				   + "matches.id as match_id,"
+				   + "matches.match_datetime as datetime,"
+				   + "matches.match_state as state,"
+				   + "t1.id as home_id,"
+				   + "t2.id as guest_id,"
+				   + "t1.team_name as home_name,"
+				   + "t2.team_name as guest_name "
+				   + "from "
+				   + "competition INNER JOIN matches INNER JOIN team as t1 INNER JOIN team as t2 "
+				   + "on competition.sport_id=? and competition.id = matches.competition_id and "
+				   + "matches.domestic_id = t1.id and matches.guest_id = t2.id;";
+		Map<Integer, Competition> compets = new HashMap<Integer, Competition>();
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql, new Object[] {id});
+		for (Map row : rows) {
+			Competition compet;
+			if(compets.get(Integer.parseInt(String.valueOf(row.get("comp_id"))))==null){
+				compet = new Competition();
+				compet.setID(Integer.parseInt(String.valueOf(row.get("comp_id"))));
+				compet.setCompetitionName((String)row.get("comp_name"));
+				compet.setSportID(Integer.parseInt(String.valueOf(row.get("sport_id"))));
+				compet.setMatches(new HashMap<Integer, Match>());
+				compets.put(compet.getID(), compet);
+			}
+			else  {
+				compet = compets.get(Integer.parseInt(String.valueOf(row.get("comp_id"))));
+			}
+			
+			//compet.setMatches(new HashMap<Integer, Match>());
+			Match match;
+			if(compet.getMatches().get(Integer.parseInt(String.valueOf(row.get("match_id"))))==null){
+				match = new Match();
+				match.setID(Integer.parseInt(String.valueOf(row.get("match_id"))));
+				// Domestic team 
+					match.setDomestic(new Team());
+					match.getDomestic().setID(Integer.parseInt(String.valueOf(row.get("home_id"))));
+					match.getDomestic().setTeamName((String)row.get("home_name"));
+					match.getDomestic().setCompetitionID(compet.getID());
+				// Guest team 
+					match.setGuest(new Team());
+					match.getGuest().setID(Integer.parseInt(String.valueOf(row.get("guest_id"))));
+					match.getGuest().setTeamName((String)row.get("guest_name"));
+				try {
+					match.setDateTime(StrToDate.stringToDate(row.get("datetime").toString()));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				match.setState(MatchState.valueOf((String)row.get("state")));
+				match.getGuest().setCompetitionID(compet.getID());
+				compet.getMatches().put(match.getID(), match);
+			}
+			else {
+				match = compet.getMatches().get(Integer.parseInt(String.valueOf(row.get("match_id"))));
+			}
+			
+			
+		}
+		return compets;
+	}
+	
+	
+	
+	public int createUser(final MailUser mailUser) {
+    if (mailUser == null) {
+        throw new IllegalArgumentException("mailUser cannot be null");
+    }
+    if (mailUser.getId() != null) {
+        throw new IllegalArgumentException("mailUser.getId() must be null when creating a message");
+    }
+    KeyHolder keyHolder = new GeneratedKeyHolder();
+    this.jdbcTemplate.update(new PreparedStatementCreator() {
+        public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+            PreparedStatement ps = connection.prepareStatement(
+                    "insert into mail_user (email, password, firstName, lastName) values (?, ?, ?, ?)",
+                    new String[] { "id" });
+            ps.setString(1, mailUser.getEmail());
+            ps.setString(2, mailUser.getPassword());
+            ps.setString(3, mailUser.getFirstName());
+            ps.setString(4, mailUser.getLastName());
+            return ps;
+        }
+    }, keyHolder);
+    return keyHolder.getKey().intValue();
+}
+ 

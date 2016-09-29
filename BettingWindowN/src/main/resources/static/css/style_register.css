@@ -1,0 +1,104 @@
+body {
+	background-color: black;
+	color: #FFCC00;
+	font-family: Agency FB;
+	position: absolute;
+	left: 50%;
+	width: 945px;
+	margin-top: 0px;
+	margin-left: -473px;
+}
+
+header {
+	background-image: url(/images/header.png);
+	background-repeat: no-repeat;
+	height: 227px;
+}
+
+#er {
+	padding: 5px 30px;
+	padding-bottom: 0px;
+	color: red;
+	text-align: center;
+ 	font-family: Helvetica, Arial, sans-serif;
+}
+
+#home {
+	background-image: url(/images/back.png);
+	background-repeat: no-repeat;
+	/* background-attachment: fixed; */
+	background-position: center;
+	height: 450px;
+	width: 945px;
+}
+
+#central {
+	margin: 30px 30px 30px 30px;
+}
+
+/* Register table */
+#register {
+	width: 500px;
+	margin: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 30px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border: 2px solid #FFCC00;
+	border-radius: 15px;
+	background-image: url(/images/back.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+}
+
+table {
+	border-spacing: 20px;
+}
+/****  Navigation  ****/
+.nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	font-size: 22px;
+}
+
+.nav li {
+	float: left;
+}
+
+.nav li a {
+	background-color: #333;
+	display: inline-block;
+	color: white;
+	text-align: center;
+	padding-left: 22px;
+	padding-right: 22px;
+	padding-top: 4px;
+	padding-bottom: 6px;
+	text-decoration: none;
+	border-left: 4px solid #333;
+	border-right: 4px solid #333;
+	border-top: 4px solid white;
+	border-bottom: 4px solid white;
+	margin-bottom: 0px;
+	width: 66px;
+}
+
+.nav li a:hover {
+	display: block;
+	color: #FFCC00;
+}
+/* Footer */
+footer {
+	background-image: url(/images/footer.png);
+	background-repeat: no-repeat;
+	height: 84px;
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+	width: 945px;
+}
