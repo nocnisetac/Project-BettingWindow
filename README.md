@@ -1,3 +1,3 @@
 ## Betting Window - online kladionica
 
-Dokument sa okvirnom je u projektu. Izrada kompletne specifikacije u toku.
+Dokument sa specifikacijom je u projektu (BettingWindow.pdf). Izrada kompletne specifikacije u toku.
